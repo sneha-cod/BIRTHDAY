@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Achaa ❤️</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #ffe5ec, #fff1f5, #fff8fa);
+        font-family: Poppins, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .sparkle {
+        position: absolute;
+        font-size: 20px;
+        animation: float 8s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-150px);
+          opacity: 0;
+        }
+      }
+
+      .envelope {
+        position: relative;
+        width: 340px;
+        height: 220px;
+        cursor: pointer;
+      }
+
+      .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #ffb3c6;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .flap {
+        position: absolute;
+        width: 100%;
+        height: 110px;
+        background: #ff8fab;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top;
+        transition: 1s;
+        z-index: 5;
+      }
+
+      .open .flap {
+        transform: rotateX(180deg);
+      }
+
+      .card {
+        position: fixed;
+        width: 80%;
+        max-width: 750px;
+        height: 85vh;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(15px);
+        border-radius: 25px;
+        padding: 30px;
+        overflow: auto;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%) scale(0);
+
+        opacity: 0;
+
+        transition: 1.5s;
+      }
+
+      .card.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+
+      .title {
+        font-family: "Dancing Script", cursive;
+        font-size: 55px;
+        text-align: center;
+        color: #ff4d6d;
+      }
+
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 25px 0;
+        flex-wrap: wrap;
+      }
+
+      .pic {
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 4px solid white;
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+        transition: 0.4s;
+      }
+
+      .pic:hover {
+        transform: scale(1.08);
+      }
+
+      .pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .letter {
+        font-size: 17px;
+        line-height: 2;
+        color: #555;
+        white-space: pre-wrap;
+      }
+
+      .surprise {
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #ffd6e0, #fff0f5);
+        font-size: 22px;
+        font-weight: bold;
+        color: #ff4d6d;
+      }
+
+      .click {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: 600;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="envelope" id="envelope">
+      <div class="back"></div>
+      <div class="flap"></div>
+
+      <div class="click">💌 Click To Open</div>
+    </div>
+
+    <div class="card" id="card">
+      <div class="title">Happy Birthday Dad ❤️</div>
+
+      <div class="gallery">
+        <div class="pic">
+          <img src="WhatsApp Image 2026-06-12 at 6.58.43 PM.jpeg" />
+        </div>
+
+        <div class="pic">
+          <img src="WhatsApp Image 2026-06-12 at 6.58.44 PM.jpeg" />
+        </div>
+
+        <div class="pic">
+          <img src="WhatsApp Image 2026-06-12 at 6.58.45 PM.jpeg" />
+        </div>
+      </div>
+
+      <div class="letter" id="letter"></div>
+
+      <div class="surprise">
+        🎂 Thank you for being our first hero, our strongest support, and our
+        forever safe place.
+
+        <br /><br />
+
+        ❤️ We Love You Achaa❤️
+      </div>
+    </div>
+
+    <script>
+      const envelope = document.getElementById("envelope");
+      const card = document.getElementById("card");
+
+      envelope.addEventListener("click", () => {
+        document.querySelector(".flap").style.transform = "rotateX(180deg)";
+
+        setTimeout(() => {
+          envelope.style.display = "none";
+          card.classList.add("show");
+
+          typeWriter();
+        }, 1000);
+      });
+
+      const text = `Dear Achaa,
+
+On your special day, We just want to tell you how grateful We are to have you in my life.
+
+Thank you for every sacrifice you made, every lesson you taught us, and every time you stood beside us when we needed support.
+
+You have always believed in us, encouraged us, and inspired us to become a better person.
+
+Your strength, kindness, and love are the reasons We feel safe and confident.
+
+Even though We don't always express it, We both  admire you more than words can ever describe.
+
+We hope this year brings you endless happiness, good health, peace, and beautiful memories.
+
+You deserve all the love and joy in the world.
+
+Thank you for being the most amazing father.
+
+Happy Birthday to our hero ❤️
+
+With all our love,
+
+Your Daughter,
+Sneha & Sreya ❤️`;
+
+      let i = 0;
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("letter").innerHTML += text.charAt(i);
+
+          i++;
+
+          setTimeout(typeWriter, 35);
+        }
+      }
+
+      function sparkle() {
+        const s = document.createElement("div");
+
+        s.classList.add("sparkle");
+
+        const items = ["✨", "💖", "🌸", "🤍", "⭐", "💗"];
+
+        s.innerHTML = items[Math.floor(Math.random() * items.length)];
+
+        s.style.left = Math.random() * 100 + "vw";
+
+        s.style.fontSize = 15 + Math.random() * 20 + "px";
+
+        document.body.appendChild(s);
+
+        setTimeout(() => {
+          s.remove();
+        }, 8000);
+      }
+
+      setInterval(sparkle, 300);
+    </script>
+  </body>
+</html>
